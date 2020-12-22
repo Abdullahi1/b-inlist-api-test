@@ -1,0 +1,109 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+def libs = rootProject.ext.libraryVersions
+def testLibs = rootProject.ext.testLibraryVersions
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.apitest"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        test {
+            java.srcDirs += "$projectDir/src/testRes"
+        }
+
+        androidTest {
+            java.srcDirs += "$projectDir/src/testRes"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+
+    implementation project(':domain')
+    implementation project(':data')
+
+    // Support
+    implementation "androidx.appcompat:appcompat:$libs.appCompat"
+    implementation "androidx.legacy:legacy-support-v4:$libs.support"
+    implementation "com.google.android.material:material:$libs.material"
+
+    // Constraint
+    implementation "androidx.constraintlayout:constraintlayout:$libs.constraintLayout"
+
+    // Arch
+    implementation "androidx.lifecycle:lifecycle-extensions:$libs.lifecycle"
+    implementation "androidx.navigation:navigation-fragment-ktx:$libs.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$libs.navigation"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutines"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$libs.timber"
+
+    // Multidex
+    implementation "com.android.support:multidex:$libs.multiDex"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
+    kapt "androidx.hilt:hilt-compiler:1.0.0-alpha02"
+
+
+
+    // Unit test
+    testImplementation "junit:junit:$testLibs.junit"
+    testImplementation "org.mockito:mockito-inline:$testLibs.mockitoInline"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$testLibs.mockitoKotlin"
+
+    // Integration test
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testLibs.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$testLibs.espresso"
+
+
+}

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="16dp"
+        app:visibleGone="@{show}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/card_scheme_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_scheme"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/card_type_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/card_scheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{cardInfo.cardScheme.toUpperCase()}"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/card_scheme_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_scheme_label"
+                app:layout_constraintTop_toTopOf="@+id/card_scheme_label"
+                tools:text="Visa" />
+
+            <TextView
+                android:id="@+id/card_type_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_card_type"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/bank_name_label"
+                app:layout_constraintStart_toStartOf="@id/card_scheme_label"
+                app:layout_constraintTop_toBottomOf="@+id/card_scheme_label" />
+
+            <TextView
+                android:id="@+id/card_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{cardInfo.cardType}"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/card_type_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/card_type_label"
+                app:layout_constraintTop_toTopOf="@+id/card_type_label"
+                tools:text="Debit" />
+
+            <TextView
+                android:id="@+id/bank_name_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_bank_name"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/country_name_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_type_label" />
+
+            <TextView
+                android:id="@+id/bank_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{cardInfo.bankName}"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/bank_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bank_name_label"
+                app:layout_constraintTop_toTopOf="@+id/bank_name_label"
+                tools:text="Zenith" />
+
+            <TextView
+                android:id="@+id/country_name_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_country_name"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/is_prepaid_label"
+                app:layout_constraintStart_toStartOf="@id/bank_name_label"
+                app:layout_constraintTop_toBottomOf="@+id/bank_name_label" />
+
+
+            <TextView
+                android:id="@+id/country_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{cardInfo.countryName}"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/country_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/country_name_label"
+                app:layout_constraintTop_toTopOf="@+id/country_name_label"
+                tools:text="Denmark" />
+
+            <TextView
+                android:id="@+id/is_prepaid_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_is_prepaid"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/card_number_length_label"
+                app:layout_constraintStart_toStartOf="@id/country_name_label"
+                app:layout_constraintTop_toBottomOf="@+id/country_name_label" />
+
+            <TextView
+                android:id="@+id/is_prepaid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{cardInfo.prepaid? @string/prepaid : @string/postpaid}"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/is_prepaid_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/is_prepaid_label"
+                app:layout_constraintTop_toTopOf="@+id/is_prepaid_label"
+                tools:text="Prepaid" />
+
+            <TextView
+                android:id="@+id/card_number_length_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/label_card_number_length"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/is_prepaid_label"
+                app:layout_constraintTop_toBottomOf="@+id/is_prepaid_label" />
+
+            <TextView
+                android:id="@+id/card_number_length"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{cardInfo.cardNumberLength}"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/card_number_length_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_number_length_label"
+                app:layout_constraintTop_toTopOf="@+id/card_number_length_label"
+                tools:text="16" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <data>
+
+        <variable
+            name="show"
+            type="Boolean" />
+
+        <variable
+            name="cardInfo"
+            type="com.example.domain.model.CardInfo" />
+    </data>
+</layout>
